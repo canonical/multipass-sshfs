@@ -1,0 +1,46 @@
+name: multipass-sshfs
+title: SSHFS for Multipass
+summary: A network filesystem client for mounting host directories
+description: |
+  SSHFS allows you to mount a remote filesystem using SFTP via Multipass.
+  Use `multipass mount` to mount a host directory in a Multipass instance.
+license: GPL-2.0
+
+version: '0.1'
+confinement: strict
+base: core18
+grade: devel
+
+parts:
+  libfuse:
+    plugin: meson
+    source: https://github.com/libfuse/libfuse.git
+    meson-parameters:
+    - --prefix=/
+    - --buildtype=release
+    - -Dutils=false
+    - -Dexamples=false
+    build-packages:
+    - pkg-config
+    stage:
+    - -bin/
+    - -etc/
+    - -sbin/
+    - -dev/
+    - -share/
+    prime:
+    - -include/
+    - -lib/x86_64-linux-gnu/pkgconfig/
+
+  sshfs:
+    after:
+    - libfuse
+    plugin: meson
+    source: https://github.com/libfuse/sshfs.git
+    meson-parameters:
+    - --prefix=/
+    - --buildtype=release
+    build-packages:
+    - libglib2.0-dev
+    stage:
+    - -sbin/
