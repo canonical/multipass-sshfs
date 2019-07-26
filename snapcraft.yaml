@@ -9,7 +9,7 @@ license: GPL-2.0
 version: '0.1'
 confinement: strict
 base: core18
-grade: devel
+grade: stable
 
 parts:
   libfuse:
