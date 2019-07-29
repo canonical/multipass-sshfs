@@ -17,6 +17,7 @@ parts:
     source: https://github.com/libfuse/libfuse.git
     meson-parameters:
     - --prefix=/
+    - --libdir=lib/
     - --buildtype=release
     - -Dutils=false
     - -Dexamples=false
@@ -30,7 +31,7 @@ parts:
     - -share/
     prime:
     - -include/
-    - -lib/${SNAPCRAFT_ARCH_TRIPLET}/pkgconfig/
+    - -lib/pkgconfig/
 
   sshfs:
     after:
