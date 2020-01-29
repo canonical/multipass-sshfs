@@ -16,6 +16,7 @@ parts:
   libfuse:
     plugin: meson
     source: https://github.com/libfuse/libfuse.git
+    source-tag: fuse-3.9.0
     meson-parameters:
     - --prefix=/
     - --libdir=lib/
@@ -39,6 +40,7 @@ parts:
     - libfuse
     plugin: meson
     source: https://github.com/libfuse/sshfs.git
+    source-tag: sshfs-3.7.0
     meson-parameters:
     - --prefix=/
     - --buildtype=release
