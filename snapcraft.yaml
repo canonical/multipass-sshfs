@@ -6,7 +6,7 @@ description: |
   Use `multipass mount` to mount a host directory in a Multipass instance.
 license: GPL-2.0
 
-version: '0.1'
+version: git
 confinement: strict
 base: bare
 build-base: core18
