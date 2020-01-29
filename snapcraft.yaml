@@ -1,5 +1,5 @@
 name: multipass-sshfs
-title: SSHFS for Multipass
+title: SSHFS for Multipass instances
 summary: A network filesystem client for mounting host directories
 description: |
   SSHFS allows you to mount a remote filesystem using SFTP via Multipass.
