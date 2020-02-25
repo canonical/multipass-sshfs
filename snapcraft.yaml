@@ -12,6 +12,13 @@ base: bare
 build-base: core18
 grade: stable
 
+apps:
+  env:
+    command: bin/busybox env
+    environment:
+      LD_LIBRARY_PATH: $SNAP/lib
+    adapter: none
+
 parts:
   libfuse:
     plugin: meson
@@ -48,3 +55,9 @@ parts:
     - libglib2.0-dev
     stage:
     - -sbin/
+
+  busybox-static:
+    plugin: dump
+    source: .
+    stage-packages:
+    - busybox-static
