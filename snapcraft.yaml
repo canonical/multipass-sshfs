@@ -8,8 +8,7 @@ license: GPL-2.0
 
 version: git
 confinement: strict
-base: bare
-build-base: core18
+base: core22
 grade: stable
 
 apps:
@@ -17,13 +16,12 @@ apps:
     command: bin/busybox env
     environment:
       LD_LIBRARY_PATH: $SNAP/lib
-    adapter: none
 
 parts:
   libfuse:
     plugin: meson
     source: https://github.com/libfuse/libfuse.git
-    source-tag: fuse-3.9.0
+    source-tag: fuse-3.17.1
     meson-parameters:
     - --prefix=/
     - --libdir=lib/
@@ -32,6 +30,8 @@ parts:
     - -Dexamples=false
     build-packages:
     - pkg-config
+    - meson
+    - ninja-build
     stage:
     - -bin/
     - -etc/
@@ -47,12 +47,14 @@ parts:
     - libfuse
     plugin: meson
     source: https://github.com/libfuse/sshfs.git
-    source-tag: sshfs-3.7.0
+    source-tag: sshfs-3.7.3
     meson-parameters:
     - --prefix=/
     - --buildtype=release
     build-packages:
     - libglib2.0-dev
+    - meson
+    - ninja-build
     stage:
     - -sbin/
 
